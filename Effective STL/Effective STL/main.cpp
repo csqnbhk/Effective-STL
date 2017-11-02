@@ -1,8 +1,8 @@
 /**************************************************************
-           function:µÚÒ»ÕÂ"ÈÝÆ÷"Ê¹ÓÃ½¨Òé
-           ¡ï:È«²¿ÄÚÈÝÀ´×Ô"Effective STL"¸ÃÊé
-		   author:Demon
-		   Time:2017/11/2
+           function:ç¬¬ä¸€ç« "å®¹å™¨"ä½¿ç”¨å»ºè®®
+           â˜…:å…¨éƒ¨å†…å®¹æ¥è‡ª"Effective STL"è¯¥ä¹¦
+	   author:Demon
+	   Time:2017/11/2
 **************************************************************/
 
 #include<iostream>
@@ -18,92 +18,92 @@ int main()
 {
 
 
-	//¡ï1.É÷ÖØÑ¡ÔñÈÝÆ÷ÀàÐÍ
+	//â˜…1.æ…Žé‡é€‰æ‹©å®¹å™¨ç±»åž‹
 
 	 /*
-	  ¡ö±ê×¼STLÐòÁÐÈÝÆ÷£ºvector£¬string£¬deque,list
+	  â– æ ‡å‡†STLåºåˆ—å®¹å™¨ï¼švectorï¼Œstringï¼Œdeque,list
 
-	  ¡ö±ê×¼STL¹ØÁªÈÝÆ÷£ºset£¬multiset£¬map£¬multimap
+	  â– æ ‡å‡†STLå…³è”å®¹å™¨ï¼šsetï¼Œmultisetï¼Œmapï¼Œmultimap
 
-	  ¡ö·Ç±ê×¼ÐòÁÐÈÝÆ÷£ºslist,rope
+	  â– éžæ ‡å‡†åºåˆ—å®¹å™¨ï¼šslist,rope
 
-	  ¡ö·Ç±ê×¼¹ØÁªÈÝÆ÷£ºhash_set,hash_multiset,hash_map,hash_multimap
+	  â– éžæ ‡å‡†å…³è”å®¹å™¨ï¼šhash_set,hash_multiset,hash_map,hash_multimap
 
-	  ¡övector<char>×÷ÎªstringµÄÌæ´ú
+	  â– vector<char>ä½œä¸ºstringçš„æ›¿ä»£
 
-	  ¡övector×÷Îª±ê×¼¹ØÁªÈÝÆ÷µÄÌæ´ú
+	  â– vectorä½œä¸ºæ ‡å‡†å…³è”å®¹å™¨çš„æ›¿ä»£
 	 
-	  ¡ö¼¸ÖÖ±ê×¼µÄ·ÇSTLÈÝÆ÷£ºÊý×é£¬bitset,valarray,stack,queue,priority_queue
+	  â– å‡ ç§æ ‡å‡†çš„éžSTLå®¹å™¨ï¼šæ•°ç»„ï¼Œbitset,valarray,stack,queue,priority_queue
 	 
-	  Òâ¼û£º
-	  1.ÊÇ·ñÐèÒªÔÚÈÝÆ÷ÈÎÒâÎ»ÖÃ²åÈëÐÂÔªËØ£¿
-	  ´ð£ºÈç¹ûÐèÒª£¬Ñ¡ÔñÐòÁÐÈÝÆ÷£¬¹ØÁªÈÝÆ÷²»ÐÐ¡£
+	  æ„è§ï¼š
+	  1.æ˜¯å¦éœ€è¦åœ¨å®¹å™¨ä»»æ„ä½ç½®æ’å…¥æ–°å…ƒç´ ï¼Ÿ
+	  ç­”ï¼šå¦‚æžœéœ€è¦ï¼Œé€‰æ‹©åºåˆ—å®¹å™¨ï¼Œå…³è”å®¹å™¨ä¸è¡Œã€‚
 
-	  2.ÊÇ·ñ¹ØÐÄÈÝÆ÷ÖÐÔªËØÊÇ·ñÅÅÐò£¿
-	  ´ð£ºÈç¹û²»¹ØÐÄÅÅÐò£¬¿ÉÒÔÑ¡ÔñÉ¢ÁÐÈÝÆ÷£»Èç¹ûÒªÅÅÐò£¬¾Í²»¿ÉÒÔÑ¡ÔñÉ¢ÁÐÈÝÆ÷¡£
+	  2.æ˜¯å¦å…³å¿ƒå®¹å™¨ä¸­å…ƒç´ æ˜¯å¦æŽ’åºï¼Ÿ
+	  ç­”ï¼šå¦‚æžœä¸å…³å¿ƒæŽ’åºï¼Œå¯ä»¥é€‰æ‹©æ•£åˆ—å®¹å™¨ï¼›å¦‚æžœè¦æŽ’åºï¼Œå°±ä¸å¯ä»¥é€‰æ‹©æ•£åˆ—å®¹å™¨ã€‚
 
-	  3.ÐèÒªÄÄÖÖÀàÐÍµÄµü´úÆ÷£¿
-	  ´ð£ºÈç¹ûÊÇËæ»ú·ÃÎÊµü´úÆ÷£¬¿ÉÒÔÑ¡Ôñvector£¬deque,string,rope¡£Èç¹ûÒªË«Ïò
-	      µü´úÆ÷£¬ÔòÒª±ÜÃâÊ¹ÓÃslist(µ¥Ïòµü´úÆ÷£©
+	  3.éœ€è¦å“ªç§ç±»åž‹çš„è¿­ä»£å™¨ï¼Ÿ
+	  ç­”ï¼šå¦‚æžœæ˜¯éšæœºè®¿é—®è¿­ä»£å™¨ï¼Œå¯ä»¥é€‰æ‹©vectorï¼Œdeque,string,ropeã€‚å¦‚æžœè¦åŒå‘
+	      è¿­ä»£å™¨ï¼Œåˆ™è¦é¿å…ä½¿ç”¨slist(å•å‘è¿­ä»£å™¨ï¼‰
 
-	  4.µ±ÔªËØ²åÈë»òÕßÉ¾³ý²Ù×÷Ê±£¬±ÜÃâÒÆ¶¯Ô­À´ÔªËØÎ»ÖÃÊÇ·ñºÜÖØÒª£¿
-	  ´ð£ºÈç¹ûÊÇ£¬¾ÍÒª±ÜÃâÊ¹ÓÃÁ¬ÐøÄÚ´æµÄÈÝÆ÷¡£
+	  4.å½“å…ƒç´ æ’å…¥æˆ–è€…åˆ é™¤æ“ä½œæ—¶ï¼Œé¿å…ç§»åŠ¨åŽŸæ¥å…ƒç´ ä½ç½®æ˜¯å¦å¾ˆé‡è¦ï¼Ÿ
+	  ç­”ï¼šå¦‚æžœæ˜¯ï¼Œå°±è¦é¿å…ä½¿ç”¨è¿žç»­å†…å­˜çš„å®¹å™¨ã€‚
 
-	  5.ÈÝÆ÷ÖÐÊý¾ÝµÄ²¼¾ÖÊÇ·ñÒªºÍC¼æÈÝ£¿
-	  ´ð£ºÈç¹ûÊÇ£¬¾ÍÖ»ÄÜÑ¡Ôñvector¡£
+	  5.å®¹å™¨ä¸­æ•°æ®çš„å¸ƒå±€æ˜¯å¦è¦å’ŒCå…¼å®¹ï¼Ÿ
+	  ç­”ï¼šå¦‚æžœæ˜¯ï¼Œå°±åªèƒ½é€‰æ‹©vectorã€‚
 
-	  6.ÈÝÆ÷ÔªËØµÄ²éÕÒËÙ¶ÈÊÇ·ñÎª¿¼ÂÇµÄ¹Ø¼ü£¿
-	  ´ð£ºÈç¹ûÊÇ£¬¿ÉÒÔ¿¼ÂÇÉ¢ÁÐÈÝÆ÷£¬ÅÅÐòµÄvectorºÍ±ê×¼¹ØÁªÈÝÆ÷¡£
+	  6.å®¹å™¨å…ƒç´ çš„æŸ¥æ‰¾é€Ÿåº¦æ˜¯å¦ä¸ºè€ƒè™‘çš„å…³é”®ï¼Ÿ
+	  ç­”ï¼šå¦‚æžœæ˜¯ï¼Œå¯ä»¥è€ƒè™‘æ•£åˆ—å®¹å™¨ï¼ŒæŽ’åºçš„vectorå’Œæ ‡å‡†å…³è”å®¹å™¨ã€‚
 
-	  7.¶ÔÓÚ²åÈëºÍÉ¾³ý²Ù×÷£¬ÊÇ·ñÐèÒªÊÂÎñ´¦Àí£¿
-	  ´ð£ºÈç¹ûÐèÒª£¬¿ÉÒÔÑ¡Ôñlist£¬Ö»ÓÐlist¶Ô¶à¸öÔªËØµÄ²åÈë²Ù×÷
-	      Ìá¹©ÊÂÎïÓïÒå¡£
+	  7.å¯¹äºŽæ’å…¥å’Œåˆ é™¤æ“ä½œï¼Œæ˜¯å¦éœ€è¦äº‹åŠ¡å¤„ç†ï¼Ÿ
+	  ç­”ï¼šå¦‚æžœéœ€è¦ï¼Œå¯ä»¥é€‰æ‹©listï¼Œåªæœ‰listå¯¹å¤šä¸ªå…ƒç´ çš„æ’å…¥æ“ä½œ
+	      æä¾›äº‹ç‰©è¯­ä¹‰ã€‚
 	 */
 
 
-	 //¡ï2.²»ÒªÊÔÍ¼±àÐ´¶ÀÁ¢ÓÚÈÝÆ÷ÀàÐÍµÄ´úÂë£¨ÂýÂýÀí½â£¬ÏÖÔÚ²»×ö×Ü½á£©
+	 //â˜…2.ä¸è¦è¯•å›¾ç¼–å†™ç‹¬ç«‹äºŽå®¹å™¨ç±»åž‹çš„ä»£ç ï¼ˆæ…¢æ…¢ç†è§£ï¼ŒçŽ°åœ¨ä¸åšæ€»ç»“ï¼‰
 
 
 
-	 //¡ï3.È·±£ÈÝÆ÷ÖÐµÄ¶ÔÏó¸±±¾ÕýÈ·¶ø¸ßÐ§
+	 //â˜…3.ç¡®ä¿å®¹å™¨ä¸­çš„å¯¹è±¡å‰¯æœ¬æ­£ç¡®è€Œé«˜æ•ˆ
 
 	  /*
-	    1.°þÀëÏÖÏó£º´´½¨Ò»¸öÈÝÆ÷´æÔÚ»ùÀà¶ÔÏó£¬½á¹û·Å½øÈ¥µÄÊÇÅÉÉúÀàµÄ¶ÔÏó¡£
-		            ´ËÊ±£¬ÅÉÉúÀà¶ÔÏó£¨Í¨¹ý»ùÀàµÄ¸´ÖÆ¹¹Ôìº¯Êý£©±»¸´ÖÆ½øÈÝÆ÷£¬
-					ÅÉÉúÀàËùÌØÓÐµÄ²¿·ÖÏûÊ§¡£
+	    1.å‰¥ç¦»çŽ°è±¡ï¼šåˆ›å»ºä¸€ä¸ªå®¹å™¨å­˜åœ¨åŸºç±»å¯¹è±¡ï¼Œç»“æžœæ”¾è¿›åŽ»çš„æ˜¯æ´¾ç”Ÿç±»çš„å¯¹è±¡ã€‚
+		            æ­¤æ—¶ï¼Œæ´¾ç”Ÿç±»å¯¹è±¡ï¼ˆé€šè¿‡åŸºç±»çš„å¤åˆ¶æž„é€ å‡½æ•°ï¼‰è¢«å¤åˆ¶è¿›å®¹å™¨ï¼Œ
+					æ´¾ç”Ÿç±»æ‰€ç‰¹æœ‰çš„éƒ¨åˆ†æ¶ˆå¤±ã€‚
 		  
-	   ÈçºÎ½â¾ö£¿
-	   ´ð£ºÈÝÆ÷ÖÐ´æÔÚ1µÄ²»ÒªÊÇ¶ÔÏó£¬Ó¦¸Ã´æÔÚ¶ÔÏóµÄÖ¸Õë¡£ÖÇÄÜÖ¸Õë¸üÊÇÒ»¸ö²»´íµÄ
-	       Ñ¡Ôñ¡£
+	   å¦‚ä½•è§£å†³ï¼Ÿ
+	   ç­”ï¼šå®¹å™¨ä¸­å­˜åœ¨1çš„ä¸è¦æ˜¯å¯¹è±¡ï¼Œåº”è¯¥å­˜åœ¨å¯¹è±¡çš„æŒ‡é’ˆã€‚æ™ºèƒ½æŒ‡é’ˆæ›´æ˜¯ä¸€ä¸ªä¸é”™çš„
+	       é€‰æ‹©ã€‚
 
 	  */
 
 
-	  //¡ï4.µ÷ÓÃempty¶ø²»ÊÇsize()ÅÐ¶ÏÈÝÆ÷ÊÇ·ñÎª¿Õ
+	  //â˜…4.è°ƒç”¨emptyè€Œä¸æ˜¯size()åˆ¤æ–­å®¹å™¨æ˜¯å¦ä¸ºç©º
 	   
 	  /*
-	    1.ÎªÊ²Ã´ÕâÃ´×ö£¿
-		´ð£ºempty¶ÔËùÓÐµÄ±ê×¼ÈÝÆ÷¶¼ÊÇ³£ÊýÊ±¼ä²Ù×÷£¬
-		    ¶ÔÓÚÒ»Ð©listÊµÏÖ£¨Á´½Ó²Ù×÷£¬splice)£¬sizeÊÇÏßÐÔÊ±¼ä¡£
+	    1.ä¸ºä»€ä¹ˆè¿™ä¹ˆåšï¼Ÿ
+		ç­”ï¼šemptyå¯¹æ‰€æœ‰çš„æ ‡å‡†å®¹å™¨éƒ½æ˜¯å¸¸æ•°æ—¶é—´æ“ä½œï¼Œ
+		    å¯¹äºŽä¸€äº›listå®žçŽ°ï¼ˆé“¾æŽ¥æ“ä½œï¼Œsplice)ï¼Œsizeæ˜¯çº¿æ€§æ—¶é—´ã€‚
 	  
-	    ²»¹ÜÔõÑù£¬×ÜÊÇÓÃemptyÀ´¼ì²éÈÝÆ÷ÖÐÔªËØ¸öÊýÊÇ·ñÎª0.
+	    ä¸ç®¡æ€Žæ ·ï¼Œæ€»æ˜¯ç”¨emptyæ¥æ£€æŸ¥å®¹å™¨ä¸­å…ƒç´ ä¸ªæ•°æ˜¯å¦ä¸º0.
 	  
 	  */
 
-	  //¡ï5.Çø¼ä³ÉÔ±º¯ÊýÓÅÓÚÓëÖ®¶ÔÓ¦µÄµ¥ÔªËØ³ÉÔ±º¯Êý¡£
+	  //â˜…5.åŒºé—´æˆå‘˜å‡½æ•°ä¼˜äºŽä¸Žä¹‹å¯¹åº”çš„å•å…ƒç´ æˆå‘˜å‡½æ•°ã€‚
 
-	  //¡ï6.µ±ÐÄC++±àÒëÆ÷·³ÈËµÄ·ÖÀë»úÖÆ
-	//´íÎó×ö·¨
+	  //â˜…6.å½“å¿ƒC++ç¼–è¯‘å™¨çƒ¦äººçš„åˆ†ç¦»æœºåˆ¶
+	//é”™è¯¯åšæ³•
 	/*
-	      ifstream testFile(R"(C:\Users\Administrator\Desktop\test.txt)");
+	     ifstream testFile(R"(C:\Users\Administrator\Desktop\test.txt)");
 	     list<int> test(istream_iterator<int>(testFile), istream_iterator<int>());
-	     ÉÏÃæÊÇÒ»¸öº¯ÊýÉùÃ÷:
-		 list<int> Î»º¯Êý·µ»ØÖµ£¬testº¯ÊýÃû£¬²ÎÊý1£ºtestFile(testFileÁ½±ßÀ¨ºÅ¿ÉÒÔÊ¡ÂÔ£©
-		 ÀàÐÍÎªistream_iterator<int>£»
-		 ×¢Òâ£º int test£¨int £¨temp£©£©£»ºÍint test£¨int temp£©ÊÇÒ»ÑùµÄ¡£²ÎÊýÁ½±ßÀ¨ºÅÊÇ¶àÓàµÄ¡£
-		        ²»¹ýÈ·Êµ¿ÉÒÔÕâÑù×ÓÐ´¡£
+	     ä¸Šé¢æ˜¯ä¸€ä¸ªå‡½æ•°å£°æ˜Ž:
+		 list<int> ä½å‡½æ•°è¿”å›žå€¼ï¼Œtestå‡½æ•°åï¼Œå‚æ•°1ï¼štestFile(testFileä¸¤è¾¹æ‹¬å·å¯ä»¥çœç•¥ï¼‰
+		 ç±»åž‹ä¸ºistream_iterator<int>ï¼›
+		 æ³¨æ„ï¼š int testï¼ˆint ï¼ˆtempï¼‰ï¼‰ï¼›å’Œint testï¼ˆint tempï¼‰æ˜¯ä¸€æ ·çš„ã€‚å‚æ•°ä¸¤è¾¹æ‹¬å·æ˜¯å¤šä½™çš„ã€‚
+		        ä¸è¿‡ç¡®å®žå¯ä»¥è¿™æ ·å­å†™ã€‚
 	*/
-	//ÕýÈ·×ö·¨
+	//æ­£ç¡®åšæ³•
 	/*
 	ifstream testFile(R"(C:\Users\Administrator\Desktop\test.txt)");
 	istream_iterator<int> testBegin(testFile);
@@ -116,6 +116,6 @@ int main()
 	cout << endl;
 	*/
 
-	cout << "Ã»Ð´Íê£¬¸ÄÌìÓÐ¿ÕÔÙÐ´£¡" << endl;
+	cout << "æ²¡å†™å®Œï¼Œæ”¹å¤©æœ‰ç©ºå†å†™ï¼" << endl;
 	return 0;
 }
