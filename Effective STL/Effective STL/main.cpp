@@ -334,12 +334,12 @@ int main()
         string str1;
         string str2("我是str2");
 	string str3("string对象的范围可以是一个char*指针的大小的1~7倍。string看起来简单，但是没有想到它不简单");
-        cout << "在这里string初始大小"<< sizeof(str1)<<endl;
+        cout << "在这里string类型大小为"<< sizeof(str1)<<endl;
         cout << "str2:" << strlen(str2.c_str())<<endl;
 	cout << "str3:" << strlen(str3.c_str()) << endl;
       */
 
-      //★16.把vector和string数据传给旧的API
+      //★16.把vector和string数据传给旧的API（迭代器和指针还是要区别开来）
       /*
 	vector<int> v;
 	v.push_back(22);
@@ -352,7 +352,7 @@ int main()
       */
 
       //17.使用swap压缩大小
-       //(发现：vector容量都是一个一个递增的，string超过原先capacity,容量2倍递增，加1.
+       //(发现：vector容量都是一个一个递增的，string超过原先capacity,容量2倍递增，加1
 	/*
 	string str;
 	cout << "size:" << str.size() << endl;
