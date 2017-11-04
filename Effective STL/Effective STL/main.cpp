@@ -102,14 +102,14 @@ int main()
 
 	  //★6.当心C++编译器烦人的分离机制
 	//错误做法
-	/*
-		 ifstream testFile(R"(C:\Users\Administrator\Desktop\test.txt)");
-		 list<int> test(istream_iterator<int>(testFile), istream_iterator<int>());
-		 上面是一个函数声明:
-		 list<int> 为函数返回值，test函数名，参数1：testFile(testFile两边括号可以省略）
-		 类型为istream_iterator<int>；
-		 注意： int test（int （temp））；和int test（int temp）是一样的。参数两边括号是多余的。
-				不过确实可以这样子写。
+        /*     
+	 ifstream testFile(R"(C:\Users\Administrator\Desktop\test.txt)");
+	 list<int> test(istream_iterator<int>(testFile), istream_iterator<int>());
+	 上面是一个函数声明:
+	 list<int> 为函数返回值，test函数名，参数1：testFile(testFile两边括号可以省略）
+	 类型为istream_iterator<int>；
+	 注意： int test（int （temp））；和int test（int temp）是一样的。参数两边括号是多余的。
+		不过确实可以这样子写。
 	*/
 	//正确做法
 	/*
@@ -127,41 +127,41 @@ int main()
 	//★7.如果容器中存放了通过new操作创建的指针，记得在容器对象析构前把指针delete掉
 
 	 /*
-		 例子：
-		 struct A{...}；
-		 //错误做法
-		 void test()
-		 {
-			vector<A*> v_a;
-			v_a.push_back(new A);
-			v_a.push_back(new A);
-			.....                   //出了test,v_a作用域结束，v_a全部元素析构。但是没有释放new创建的对象。
+	 例子：
+	 struct A{...}；
+	 //错误做法
+	 void test()
+	 {
+		vector<A*> v_a;
+		v_a.push_back(new A);
+		v_a.push_back(new A);
+		.....                   //出了test,v_a作用域结束，v_a全部元素析构。但是没有释放new创建的对象。
 
-		 }
-		 //正确做法
-		 void test()
-		 {
-		 vector<A*> v_a;
-		 v_a.push_back(new A);
-		 v_a.push_back(new A);
-		 .....
-		 //释放
-		 for(auto i=v_a.begin();i!=v_a.end();++i)
-		 {
-			  delete *i;
+	 }
+	 //正确做法
+	 void test()
+	 {
+	 vector<A*> v_a;
+	 v_a.push_back(new A);
+	 v_a.push_back(new A);
+	 .....
+	 //释放
+	 for(auto i=v_a.begin();i!=v_a.end();++i)
+	 {
+		  delete *i;
 
-		 }
-		}
-		//通过智能指针
-		void test()
-		{
-		   using p=boost::shared_ptr<A>;
-		   vector<p> v_a;
-		   v_a.push_back(p(new A));
-		   v_a.push_back(p(new A));
-			......  //不用自己释放指针了，一切交给智能指针
+	 }
+	}
+	//通过智能指针
+	void test()
+	{
+	   using p=boost::shared_ptr<A>;
+	   vector<p> v_a;
+	   v_a.push_back(p(new A));
+	   v_a.push_back(p(new A));
+		......  //不用自己释放指针了，一切交给智能指针
 
-		}
+	}
 
 	 */
 
@@ -173,85 +173,85 @@ int main()
 	   /*
 	  问：如何删除容器中特定值的所有对象？
 	  答：1.如果容器是vector，string，deque,使用erase_remove
-		  2.如果容器是list，使用list::remove
-		  3.如果容器是标准关联容器，使用其成员函数erase
+	  2.如果容器是list，使用list::remove
+	  3.如果容器是标准关联容器，使用其成员函数erase
 
-		  1.●
-		  vector<int> v{ 1,24,3,5,3,89,45,56,2,3 };
-		  for (auto i : v)
-		  {
-		  cout << i << "  ";
-		  }
-		  cout << endl;
-		  v.erase(remove(v.begin(), v.end(), 3), v.end());
-		  for (auto i : v)
-		  {
-		  cout << i << "  ";
-		  }
-		  cout << endl;
+	  1.●
+	  vector<int> v{ 1,24,3,5,3,89,45,56,2,3 };
+	  for (auto i : v)
+	  {
+	  cout << i << "  ";
+	  }
+	  cout << endl;
+	  v.erase(remove(v.begin(), v.end(), 3), v.end());
+	  for (auto i : v)
+	  {
+	  cout << i << "  ";
+	  }
+	  cout << endl;
 
-		  2.●
-		  list<int> L{ 12, 34, 13, 56, 34, 765, 34, 98, 17 };
-		  for (auto i : L)
-		  {
-		  cout << i << "  ";
-		  }
-		  cout << endl;
-		  L.remove(34);
-		  for (auto i : L)
-		  {
-		  cout << i << "  ";
-		  }
-		  cout << endl;
+	  2.●
+	  list<int> L{ 12, 34, 13, 56, 34, 765, 34, 98, 17 };
+	  for (auto i : L)
+	  {
+	  cout << i << "  ";
+	  }
+	  cout << endl;
+	  L.remove(34);
+	  for (auto i : L)
+	  {
+	  cout << i << "  ";
+	  }
+	  cout << endl;
           3.●
-		  using t =map<int, int>;
-		  map<int, int> m;
-		  m.insert(t::value_type(1, 3));
-		  m.insert(t::value_type(2, 35));
-		  m.insert(t::value_type(3, 3));
-		  for (auto i : m)
-		  {
-		  cout << i.second << "  ";
-		  }
-		  cout << endl;
-		  for (auto i=m.begin();i!=m.end();)
-		  {
-		  if ((*i).second == 3)
-		  {
-		  i = m.erase(i);
-		  }
-		  else
-		  {
-		  ++i;
-		  }
-		  }
-		  cout << endl;
-		  for (auto i : m)
-		  {
-		  cout << i.second << "  ";
-		  }
-		  cout << endl;
+	  using t =map<int, int>;
+	  map<int, int> m;
+	  m.insert(t::value_type(1, 3));
+	  m.insert(t::value_type(2, 35));
+	  m.insert(t::value_type(3, 3));
+	  for (auto i : m)
+	  {
+	  cout << i.second << "  ";
+	  }
+	  cout << endl;
+	  for (auto i=m.begin();i!=m.end();)
+	  {
+	  if ((*i).second == 3)
+	  {
+	  i = m.erase(i);
+	  }
+	  else
+	  {
+	  ++i;
+	  }
+	  }
+	  cout << endl;
+	  for (auto i : m)
+	  {
+	  cout << i.second << "  ";
+	  }
+	  cout << endl;
 
 	  问：如何删除容器中满足特定判别式（条件）的所有对象？
 	  答：1.如果容器是vector，string，deque，使用erase_remove_if
-		  2.如果容器是list，使用list::remove_if
-		  3.如果容器是一个标准关联容器，使用remove_copy_if和swap。
-			或者写个循环遍历容器元素，记得把迭代器传给erase时，要
-			对它进行后缀递增。
-			◆1.vector<int> v{ 1,24,3,5,3,89,45,56,2,345 };
-              for (auto i : v)
-              {
-	             cout << i << "  ";
+	      2.如果容器是list，使用list::remove_if
+	      3.如果容器是一个标准关联容器，使用remove_copy_if和swap。
+	        或者写个循环遍历容器元素，记得把迭代器传给erase时，要
+	        对它进行后缀递增。
+	  ◆1.vector<int> v{ 1,24,3,5,3,89,45,56,2,345 };
+	      for (auto i : v)
+	      {
+		     cout << i << "  ";
 			  }
-              cout << endl;
-              v.erase(remove_if(v.begin(), v.end(), bind2nd(less<int>(), 5)),v.end());
-              for (auto i : v)
-              {
-	           cout << i << "  ";
-              }
-              cout << endl;
-            ◆2
-			  list<int> L{ 12, 34, 13, 56, 34, 765, 34, 98, 17 };
+	      cout << endl;
+	      v.erase(remove_if(v.begin(), v.end(), bind2nd(less<int>(), 5)),v.end());
+	      for (auto i : v)
+	      {
+		   cout << i << "  ";
+	      }
+	      cout << endl;
+           ◆2
+	      list<int> L{ 12, 34, 13, 56, 34, 765, 34, 98, 17 };
               for (auto i : L)
               {
 	           cout << i << "  ";
@@ -264,20 +264,18 @@ int main()
              }
              cout << endl;
 
-
-
-			◆3.
-			for(auto it=v.begin();it!=v.end();)
-			{
-			 if(*it==xxx)
-			 {
-			  it=v.erase(it);
-			 }
-			 else
-			 {
-			  ++it;
-			 }
-		        }
+	   ◆3.
+	   for(auto it=v.begin();it!=v.end();)
+	   {
+	     if(*it==xxx)
+	     {
+	      it=v.erase(it);
+	     }
+	    else
+	    {
+	     ++it;
+	    }
+	  }
 
 	  问：如何在循环内部做些操作（不是删除对象）？
 	  答：1.如果容器是一个标准序列容器，写个循环遍历容器元素，特别
@@ -285,21 +283,21 @@ int main()
 	      2.如果容器是一个标准关联容器，则写一个循环来遍历容器中的
 	        元素，记得把迭代器传给erase时，要对迭代器做后缀递增。
 
-
+ 
 	 */
       
 
  /***********************************   vector和string（第二章）  **************************************/
 
-    //★13.vector和string优先于动态分配的数组
-    /*
+        //★13.vector和string优先于动态分配的数组
+	/*
 	   废话就不说，如果想要动态分配的数组，想想用vector或者string。
 	   是不是可以。
 	*/
    
 	//★14.使用reserve避免不必要的重新分配(个人感觉要和实际情况结合）
-    /*
-    vector<int> v;
+        /*
+        vector<int> v;
 	cout << "size:" << v.size() << endl;
 	cout << "capacity:" << v.capacity() << endl;
 	cout << "capacity-size=" << v.capacity() - v.size() << endl;
@@ -332,17 +330,17 @@ int main()
 	*/
      
 	//★15.string实现多样性（好像有4种,不详说。还不熟悉）
-    /*
-    string str1;
-    string str2("我是str2");
+       /*
+        string str1;
+        string str2("我是str2");
 	string str3("string对象的范围可以是一个char*指针的大小的1~7倍。string看起来简单，但是没有想到它不简单");
-    cout << "在这里string初始大小"<< sizeof(str1)<<endl;
-    cout << "str2:" << strlen(str2.c_str())<<endl;
+        cout << "在这里string初始大小"<< sizeof(str1)<<endl;
+        cout << "str2:" << strlen(str2.c_str())<<endl;
 	cout << "str3:" << strlen(str3.c_str()) << endl;
-   */
+      */
 
-   //★16.把vector和string数据传给旧的API
-   /*
+      //★16.把vector和string数据传给旧的API
+      /*
 	vector<int> v;
 	v.push_back(22);
 	int const*p = &v[0];
@@ -351,10 +349,10 @@ int main()
 	cout << "p1=" <<p1 << endl;
 	cout << "*p=" << *p << endl;
 	cout << "*p1=" << *p1 << endl;
-	*/
+      */
 
-   //17.使用swap压缩大小
-   //(发现：vector容量都是一个一个递增的，string超过原先capacity,容量2倍递增，加1.
+      //17.使用swap压缩大小
+       //(发现：vector容量都是一个一个递增的，string超过原先capacity,容量2倍递增，加1.
 	/*
 	string str;
 	cout << "size:" << str.size() << endl;
@@ -370,9 +368,9 @@ int main()
 	cout << "capacity:" << str.capacity() << endl;
 	*/
 
-    //18.避免使用vector<bool>,可以使用deque<bool>或者bitset来替代它
+      //18.避免使用vector<bool>,可以使用deque<bool>或者bitset来替代它
     
-    /*
+       /*
 	vector<bool> v;
 	cout << v.size() << endl;
 	cout << v.capacity() << endl;
@@ -386,9 +384,9 @@ int main()
 	//bool *p = &v[0];//不能编译通过，其实vector<bool>是一个假的容器."是一个容器"和"几乎是一个容器"区别有点大。(慢慢理解）
 	cout << v.size() << endl;
 	cout << v.capacity() << endl;
-    */
+      */
     
-    //deque<bool>
+     //deque<bool>
 	/*
 	deque<bool> d;
 	cout << "sizeof(bool)" << sizeof(bool) << endl;
@@ -401,17 +399,16 @@ int main()
 	cout << "b2 :" << b2  << endl;
 	cout << "*b2:" << *b2 << endl;
 	*/
-    //bitset
-    /*
+     //bitset
+      /*
 	bitset<2> bt;
 	bt.set();
 	bt.reset(1);
 	cout << bt << endl;
 	cout << bt[0] << endl;
  	cout << bt[1] << endl;
-    */
+      */
 
-
-	cout << "没写完，改天有空再写！" << endl;
-	return 0;
+     cout << "没写完，改天有空再写！" << endl;
+     return 0;
 }
