@@ -2,7 +2,7 @@
 		   function:第一章"容器"使用建议
 		   ★:全部内容来自"Effective STL"该书
 	           author:Demon
-	           Time:2017/11/2 ,2017/11/3
+	           Time:2017/11/2 ,2017/11/3，2017/11/4
 **************************************************************/
 
 #include<iostream>
@@ -10,6 +10,8 @@
 #include<vector>
 #include<map>
 #include<set>
+#include<deque>
+#include<bitset>
 #include<fstream>
 #include<iterator>
 #include<algorithm>
@@ -201,7 +203,7 @@ int main()
 		  cout << i << "  ";
 		  }
 		  cout << endl;
-                  3.●
+          3.●
 		  using t =map<int, int>;
 		  map<int, int> m;
 		  m.insert(t::value_type(1, 3));
@@ -286,6 +288,129 @@ int main()
 
 	 */
       
+
+ /***********************************   vector和string（第二章）  **************************************/
+
+    //★13.vector和string优先于动态分配的数组
+    /*
+	   废话就不说，如果想要动态分配的数组，想想用vector或者string。
+	   是不是可以。
+	*/
+   
+	//★14.使用reserve避免不必要的重新分配(个人感觉要和实际情况结合）
+    /*
+    vector<int> v;
+	cout << "size:" << v.size() << endl;
+	cout << "capacity:" << v.capacity() << endl;
+	cout << "capacity-size=" << v.capacity() - v.size() << endl;
+	v.push_back(66);
+	v.push_back(88);
+	cout << "size:" << v.size() << endl;
+	cout << "capacity:" << v.capacity() << endl;
+	cout << "capacity-size=" << v.capacity() - v.size() << endl;
+	v.resize(10);//增加容器元素个数
+	cout << "size:" << v.size() << endl;
+	cout << "capacity:" << v.capacity() << endl;
+	cout << "capacitty-size=" << v.capacity() - v.size() << endl;
+	v.reserve(5);//改变capacity,使它小于原来的。什么都不做
+	cout << "size:" << v.size() << endl;
+	cout << "capacity:" << v.capacity() << endl;
+	cout << "capacitty-size=" << v.capacity() - v.size() << endl;
+	v.reserve(15);////改变capacity,使它大于原来的。重新分配
+	cout << "size:" << v.size() << endl;
+	cout << "capacity:" << v.capacity() << endl;
+	cout << "capacitty-size=" << v.capacity() - v.size() << endl;
+	v.push_back(886);
+	for (auto i : v)
+	{
+		cout << i << "   ";
+	}
+	cout << endl;
+	cout << "size:" << v.size() << endl;
+	cout << "capacity:" << v.capacity() << endl;
+	cout << "capacitty-size=" << v.capacity() - v.size() << endl;
+	*/
+     
+	//★15.string实现多样性（好像有4种,不详说。还不熟悉）
+    /*
+    string str1;
+    string str2("我是str2");
+	string str3("string对象的范围可以是一个char*指针的大小的1~7倍。string看起来简单，但是没有想到它不简单");
+    cout << "在这里string初始大小"<< sizeof(str1)<<endl;
+    cout << "str2:" << strlen(str2.c_str())<<endl;
+	cout << "str3:" << strlen(str3.c_str()) << endl;
+   */
+
+   //★16.把vector和string数据传给旧的API
+   /*
+	vector<int> v;
+	v.push_back(22);
+	int const*p = &v[0];
+	int const*p1 =&(*v.begin());
+	cout << "p="<<p << endl;
+	cout << "p1=" <<p1 << endl;
+	cout << "*p=" << *p << endl;
+	cout << "*p1=" << *p1 << endl;
+	*/
+
+   //17.使用swap压缩大小
+   //(发现：vector容量都是一个一个递增的，string超过原先capacity,容量2倍递增，加1.
+	/*
+	string str;
+	cout << "size:" << str.size() << endl;
+	cout << "capacity:" << str.capacity() << endl;
+	str = "令狐冲爱喝酒,哈1";
+	cout << "size:" << str.size()<< endl;
+	cout << "capacity:" << str.capacity()<<endl;
+	str.reserve(100);
+	cout << "size:" << str.size() << endl;
+	cout << "capacity:" <<str.capacity()<<endl;
+	string(str).swap(str);
+	cout << "size:" << str.size() << endl;
+	cout << "capacity:" << str.capacity() << endl;
+	*/
+
+    //18.避免使用vector<bool>,可以使用deque<bool>或者bitset来替代它
+    
+    /*
+	vector<bool> v;
+	cout << v.size() << endl;
+	cout << v.capacity() << endl;
+	v.push_back(true);
+	v.push_back(false);
+	for (auto i : v)
+	{
+		cout << i << "  ";
+	}
+	cout << endl;
+	//bool *p = &v[0];//不能编译通过，其实vector<bool>是一个假的容器."是一个容器"和"几乎是一个容器"区别有点大。(慢慢理解）
+	cout << v.size() << endl;
+	cout << v.capacity() << endl;
+    */
+    
+    //deque<bool>
+	/*
+	deque<bool> d;
+	cout << "sizeof(bool)" << sizeof(bool) << endl;
+	d.push_back(true);
+	d.push_back(false);
+	bool*b1 = &d[0];
+	bool*b2 = &d[1];
+	cout << "b1 :" << b1  << endl;
+	cout << "*b1:" << *b1 << endl;
+	cout << "b2 :" << b2  << endl;
+	cout << "*b2:" << *b2 << endl;
+	*/
+    //bitset
+    /*
+	bitset<2> bt;
+	bt.set();
+	bt.reset(1);
+	cout << bt << endl;
+	cout << bt[0] << endl;
+ 	cout << bt[1] << endl;
+    */
+
 
 	cout << "没写完，改天有空再写！" << endl;
 	return 0;
