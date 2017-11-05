@@ -2,7 +2,7 @@
 		   function:第一章"容器"使用建议
 		   ★:全部内容来自"Effective STL"该书
 	           author:Demon
-	           Time:2017/11/2 ,2017/11/3，2017/11/4
+	           Time:2017/11/2/3/4/5
 **************************************************************/
 
 #include<iostream>
@@ -289,45 +289,45 @@ int main()
 
  /***********************************   vector和string（第二章）  **************************************/
 
-        //★13.vector和string优先于动态分配的数组
-	/*
+    //★13.vector和string优先于动态分配的数组
+	  /*
 	   废话就不说，如果想要动态分配的数组，想想用vector或者string。
 	   是不是可以。
 	*/
    
 	//★14.使用reserve避免不必要的重新分配(个人感觉要和实际情况结合）
-        /*
-        vector<int> v;
-	cout << "size:" << v.size() << endl;
-	cout << "capacity:" << v.capacity() << endl;
-	cout << "capacity-size=" << v.capacity() - v.size() << endl;
-	v.push_back(66);
-	v.push_back(88);
-	cout << "size:" << v.size() << endl;
-	cout << "capacity:" << v.capacity() << endl;
-	cout << "capacity-size=" << v.capacity() - v.size() << endl;
-	v.resize(10);//增加容器元素个数
-	cout << "size:" << v.size() << endl;
-	cout << "capacity:" << v.capacity() << endl;
-	cout << "capacitty-size=" << v.capacity() - v.size() << endl;
-	v.reserve(5);//改变capacity,使它小于原来的。什么都不做
-	cout << "size:" << v.size() << endl;
-	cout << "capacity:" << v.capacity() << endl;
-	cout << "capacitty-size=" << v.capacity() - v.size() << endl;
-	v.reserve(15);////改变capacity,使它大于原来的。重新分配
-	cout << "size:" << v.size() << endl;
-	cout << "capacity:" << v.capacity() << endl;
-	cout << "capacitty-size=" << v.capacity() - v.size() << endl;
-	v.push_back(886);
-	for (auto i : v)
-	{
-		cout << i << "   ";
-	}
-	cout << endl;
-	cout << "size:" << v.size() << endl;
-	cout << "capacity:" << v.capacity() << endl;
-	cout << "capacitty-size=" << v.capacity() - v.size() << endl;
-	*/
+	   /*
+			vector<int> v;
+		cout << "size:" << v.size() << endl;
+		cout << "capacity:" << v.capacity() << endl;
+		cout << "capacity-size=" << v.capacity() - v.size() << endl;
+		v.push_back(66);
+		v.push_back(88);
+		cout << "size:" << v.size() << endl;
+		cout << "capacity:" << v.capacity() << endl;
+		cout << "capacity-size=" << v.capacity() - v.size() << endl;
+		v.resize(10);//增加容器元素个数
+		cout << "size:" << v.size() << endl;
+		cout << "capacity:" << v.capacity() << endl;
+		cout << "capacitty-size=" << v.capacity() - v.size() << endl;
+		v.reserve(5);//改变capacity,使它小于原来的。什么都不做
+		cout << "size:" << v.size() << endl;
+		cout << "capacity:" << v.capacity() << endl;
+		cout << "capacitty-size=" << v.capacity() - v.size() << endl;
+		v.reserve(15);////改变capacity,使它大于原来的。重新分配
+		cout << "size:" << v.size() << endl;
+		cout << "capacity:" << v.capacity() << endl;
+		cout << "capacitty-size=" << v.capacity() - v.size() << endl;
+		v.push_back(886);
+		for (auto i : v)
+		{
+			cout << i << "   ";
+		}
+		cout << endl;
+		cout << "size:" << v.size() << endl;
+		cout << "capacity:" << v.capacity() << endl;
+		cout << "capacitty-size=" << v.capacity() - v.size() << endl;
+		*/
      
 	//★15.string实现多样性（好像有4种,不详说。还不熟悉）
        /*
@@ -341,34 +341,34 @@ int main()
 
       //★16.把vector和string数据传给旧的API（迭代器和指针还是要区别开来）
       /*
-	vector<int> v;
-	v.push_back(22);
-	int const*p = &v[0];
-	int const*p1 =&(*v.begin());
-	cout << "p="<<p << endl;
-	cout << "p1=" <<p1 << endl;
-	cout << "*p=" << *p << endl;
-	cout << "*p1=" << *p1 << endl;
-      */
+		vector<int> v;
+		v.push_back(22);
+		int const*p = &v[0];
+		int const*p1 =&(*v.begin());
+		cout << "p="<<p << endl;
+		cout << "p1=" <<p1 << endl;
+		cout << "*p=" << *p << endl;
+		cout << "*p1=" << *p1 << endl;
+		*/
 
       //17.使用swap压缩大小
-       //(发现：vector容量都是一个一个递增的，string超过原先capacity,容量2倍递增，加1
-	/*
-	string str;
-	cout << "size:" << str.size() << endl;
-	cout << "capacity:" << str.capacity() << endl;
-	str = "令狐冲爱喝酒,哈1";
-	cout << "size:" << str.size()<< endl;
-	cout << "capacity:" << str.capacity()<<endl;
-	str.reserve(100);
-	cout << "size:" << str.size() << endl;
-	cout << "capacity:" <<str.capacity()<<endl;
-	string(str).swap(str);
-	cout << "size:" << str.size() << endl;
-	cout << "capacity:" << str.capacity() << endl;
-	*/
+      //(发现：vector容量都是一个一个递增的，string超过原先capacity,容量2倍递增，加1
+	  /*
+		string str;
+		cout << "size:" << str.size() << endl;
+		cout << "capacity:" << str.capacity() << endl;
+		str = "令狐冲爱喝酒,哈1";
+		cout << "size:" << str.size()<< endl;
+		cout << "capacity:" << str.capacity()<<endl;
+		str.reserve(100);
+		cout << "size:" << str.size() << endl;
+		cout << "capacity:" <<str.capacity()<<endl;
+		string(str).swap(str);
+		cout << "size:" << str.size() << endl;
+		cout << "capacity:" << str.capacity() << endl;
+		*/
 
-      //18.避免使用vector<bool>,可以使用deque<bool>或者bitset来替代它
+      //18.避免使用vector<bool>,可以使用deque<bool>或者bitset来替代它.boost库提供的dynamic_bitset
     
        /*
 	vector<bool> v;
@@ -387,27 +387,62 @@ int main()
       */
     
      //deque<bool>
-	/*
-	deque<bool> d;
-	cout << "sizeof(bool)" << sizeof(bool) << endl;
-	d.push_back(true);
-	d.push_back(false);
-	bool*b1 = &d[0];
-	bool*b2 = &d[1];
-	cout << "b1 :" << b1  << endl;
-	cout << "*b1:" << *b1 << endl;
-	cout << "b2 :" << b2  << endl;
-	cout << "*b2:" << *b2 << endl;
-	*/
+	 /*
+		deque<bool> d;
+		cout << "sizeof(bool)" << sizeof(bool) << endl;
+		d.push_back(true);
+		d.push_back(false);
+		bool*b1 = &d[0];
+		bool*b2 = &d[1];
+		cout << "b1 :" << b1  << endl;
+		cout << "*b1:" << *b1 << endl;
+		cout << "b2 :" << b2  << endl;
+	 	cout << "*b2:" << *b2 << endl;
+	 */
      //bitset
-      /*
-	bitset<2> bt;
-	bt.set();
-	bt.reset(1);
-	cout << bt << endl;
-	cout << bt[0] << endl;
- 	cout << bt[1] << endl;
-      */
+     /*
+		bitset<2> bt;
+		bt.set();
+		bt.reset(1);
+		cout << bt << endl;
+		cout << bt[0] << endl;
+ 		cout << bt[1] << endl;
+     */
+
+  
+	 
+  /***********************************   iterator（第四章）  **************************************/
+
+
+    //26.iterator优于(const_iterator,reverse_iterator,const_reserver_iterator)(改天仔细看看？？？？？）
+
+
+    //29.对于逐个字符的输入，使用istreambuf_iterator可以输出空格，效率也较高。(感觉各有用处，看情况）
+
+    //使用istream_iterator(没有输出空格)，注意C++的分离机制
+	/*  
+	ifstream testfile(R"(C:\Users\Administrator\Desktop\test.txt)");
+	istream_iterator<char> begin(testfile);
+	istream_iterator<char> end;
+	std::string str(begin, end);
+	cout << str << endl;
+	*/
+    //改进  
+    /*
+	ifstream testfile(R"(C:\Users\Administrator\Desktop\test.txt)");
+	istream_iterator<char> begin(testfile);
+	testfile.unsetf(ios::skipws);//禁止忽略testfile中空格
+	istream_iterator<char> end;
+	std::string str(begin, end);
+	cout << str << endl;
+	*/
+   //使用istreambuf_iterator
+	/*ifstream testfile(R"(C:\Users\Administrator\Desktop\test.txt)");
+	istreambuf_iterator<char> begin(testfile);
+	istreambuf_iterator<char> end;
+	std::string str(begin, end);
+	cout << str << endl;*/
+  
 
      cout << "没写完，改天有空再写！" << endl;
      return 0;
