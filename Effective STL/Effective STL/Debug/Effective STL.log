@@ -1,3 +1,70 @@
 ﻿  main.cpp
-  Effective STL.vcxproj -> D:\MSDev98\LIB\Effective STL\Effective STL\Debug\Effective STL.exe
-  Effective STL.vcxproj -> D:\MSDev98\LIB\Effective STL\Effective STL\Debug\Effective STL.pdb (Full PDB)
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(893): error C2064: 项不会计算为接受 2 个参数的函数
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(890): note: 参见对正在编译的函数 模板 实例化“bool std::_Debug_lt_pred<std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,const int&,const int&>(_Pr,_Ty1,_Ty2,std::_Dbfile_t,std::_Dbline_t) noexcept(<expr>)”的引用
+          with
+          [
+              _Pr=std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,
+              _Ty1=const int &,
+              _Ty2=const int &
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xtree(1086): note: 参见对正在编译的函数 模板 实例化“std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<int>>> std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>::_Insert_hint<int&,std::_Tree_node<int,void *>*>(std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<int>>>,_Valty,_Nodety)”的引用
+          with
+          [
+              _Kty=int,
+              _Pr=std::string,
+              _Alloc=std::allocator<int>,
+              _Valty=int &,
+              _Nodety=std::_Tree_node<int,void *> *
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xtree(1085): note: 参见对正在编译的函数 模板 实例化“std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<int>>> std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>::_Insert_hint<int&,std::_Tree_node<int,void *>*>(std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<int>>>,_Valty,_Nodety)”的引用
+          with
+          [
+              _Kty=int,
+              _Pr=std::string,
+              _Alloc=std::allocator<int>,
+              _Valty=int &,
+              _Nodety=std::_Tree_node<int,void *> *
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xtree(1250): note: 参见对正在编译的函数 模板 实例化“std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<int>>> std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>::emplace_hint<const char&>(std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<int>>>,const char &)”的引用
+          with
+          [
+              _Kty=int,
+              _Pr=std::string,
+              _Alloc=std::allocator<int>
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xtree(1250): note: 参见对正在编译的函数 模板 实例化“std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<int>>> std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>::emplace_hint<const char&>(std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<int>>>,const char &)”的引用
+          with
+          [
+              _Kty=int,
+              _Pr=std::string,
+              _Alloc=std::allocator<int>
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\set(110): note: 参见对正在编译的函数 模板 实例化“void std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>::insert<_Iter>(_Iter,_Iter)”的引用
+          with
+          [
+              _Kty=int,
+              _Pr=std::string,
+              _Alloc=std::allocator<int>,
+              _Iter=const char *
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\set(110): note: 参见对正在编译的函数 模板 实例化“void std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>::insert<_Iter>(_Iter,_Iter)”的引用
+          with
+          [
+              _Kty=int,
+              _Pr=std::string,
+              _Alloc=std::allocator<int>,
+              _Iter=const char *
+          ]
+  d:\msdev98\lib\effective stl\effective stl\effective stl\main.cpp(461): note: 参见对正在编译的函数 模板 实例化“std::set<int,std::string,std::allocator<_Kty>>::set<const char*>(_Iter,_Iter,const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)”的引用
+          with
+          [
+              _Kty=int,
+              _Iter=const char *
+          ]
+  d:\msdev98\lib\effective stl\effective stl\effective stl\main.cpp(461): note: 参见对正在编译的函数 模板 实例化“std::set<int,std::string,std::allocator<_Kty>>::set<const char*>(_Iter,_Iter,const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)”的引用
+          with
+          [
+              _Kty=int,
+              _Iter=const char *
+          ]
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(893): error C2056: 非法表达式
